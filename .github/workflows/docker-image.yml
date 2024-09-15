@@ -17,4 +17,12 @@ jobs:
     
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-      
+
+    - name: upload image to ECR
+      uses: appleboy/docker-ecr-action@master
+      with:
+        access_key: ${{ secrets.aws_access_key_id }}
+        secret_key: ${{ secrets.aws_secret_access_key }}
+        registry: 072824470958.dkr.ecr.eu-central-1.amazonaws.com
+        cache_from: ${{ secrets.cache }}
+        repo: myrepo
