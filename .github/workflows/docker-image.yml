@@ -28,4 +28,4 @@ jobs:
         registry: 072824470958.dkr.ecr.eu-central-1.amazonaws.com
         repo: myrepo
         region: eu-central-1
-        tags: "${{steps.id.outputs.TAG}}"
+        tags: "${{steps.tag_task.outputs.TAG}}"
