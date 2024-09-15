@@ -1,0 +1,14 @@
+---
+- name: Add user 'harry' and install apache2 package
+  hosts: all 
+  become: yes
+  tasks:
+    - name: Add user 'harry'
+      user:
+        name: harry
+        state: present
+        shell: /bin/bash
+    - name: Install apache2 package
+      apt:
+        name: apache2
+        state: present

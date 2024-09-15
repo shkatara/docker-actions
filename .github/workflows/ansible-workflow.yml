@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  ansible:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: "Install Ansible"
+      uses: alex-oleshkevich/setup-ansible@VERSION 
+      with:
+          version: "9.3.0"
+
+    - name: Run ansible
+      run: |
+        echo ${{ secrets.ANSKEY }} >> anskey.pem
+        chmod 400 anskey.pem
+        ansible-playbook --private-key=anskey.pem play.yml -i  inventory.ini -u ubuntu
+      
