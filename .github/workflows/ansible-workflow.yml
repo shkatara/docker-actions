@@ -23,7 +23,7 @@ jobs:
 
     - name: Run ansible
       run: |
-        echo ${{ secrets.ANSKEY }} >> anskey.pem
+        echo "${{ secrets.ANSKEY }}" >> anskey.pem
         chmod 400 anskey.pem
         ansible-playbook --private-key=anskey.pem play.yml -i  inventory.ini -u ubuntu
       
