@@ -21,8 +21,8 @@ jobs:
     - name: upload image to ECR
       uses: appleboy/docker-ecr-action@master
       with:
-        access_key: ${{ secrets.aws_access_key_id }}
-        secret_key: ${{ secrets.aws_secret_access_key }}
+        access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         registry: 072824470958.dkr.ecr.eu-central-1.amazonaws.com
         cache_from: ${{ secrets.cache }}
         repo: myrepo
