@@ -12,3 +12,7 @@
       apt:
         name: apache2
         state: present
+    - name: Add the sample app
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
