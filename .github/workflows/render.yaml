@@ -25,12 +25,12 @@ jobs:
           run: |
                 helm template .
 
-        - name: Commit and push rendered template to gitops branch
-          run: |
-            git config --global user.name "github-actions"
-            git config --global user.email "github-actions@github.com"
-            git checkout --orphan gitops || git checkout gitops
-            helm template . > rendered-template.yaml
-            git add rendered-template.yaml
-            git commit -m "Add rendered Helm template"
-            git push origin gitops --force
+        # - name: Commit and push rendered template to gitops branch
+        #   run: |
+        #     git config --global user.name "github-actions"
+        #     git config --global user.email "github-actions@github.com"
+        #     git checkout --orphan gitops || git checkout gitops
+        #     helm template . > rendered-template.yaml
+        #     git add rendered-template.yaml
+        #     git commit -m "Add rendered Helm template"
+        #     git push origin gitops --force
