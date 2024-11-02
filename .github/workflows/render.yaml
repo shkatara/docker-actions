@@ -1,0 +1,26 @@
+name: Render Helm Template
+
+on:
+    push:
+        branches:
+            - helm
+    pull_request:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    render:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        #- name: Install Helm
+        #  run: |
+        #        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+        - name: Render Helm template
+          run: |
+                helm template .
